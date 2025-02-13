@@ -20,7 +20,29 @@ interface ExtendMap extends L.Map {
   ruler?: LeafletRuler;
 }
 
-const Ruler = () => {
+interface LeafletRulerOptions {
+  position?: "topright" | "topleft" | "bottomright" | "bottomleft";
+  circleMarker?: {
+    color?: string;
+    radius?: number;
+  };
+  lineStyle?: {
+    color?: string;
+    dashArray?: string;
+  };
+  lengthUnit?: {
+    display?: string;
+    decimal?: number;
+    label?: string;
+  };
+  angleUnit?: {
+    display?: string;
+    decimal?: number;
+    label?: string;
+  };
+}
+
+const Ruler = (options?: LeafletRulerOptions) => {
   const map = useMap();
   const rulerRef = useRef<LeafletRuler | null>(null); // Store ruler instance
 
